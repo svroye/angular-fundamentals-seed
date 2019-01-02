@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnChanges } from "@angular/core";
 import { Passenger } from "../../models/passenger.interface";
 
 
@@ -30,13 +30,22 @@ import { Passenger } from "../../models/passenger.interface";
         </div>
         `
 })
-export class PassengerDetailComponent {
+export class PassengerDetailComponent implements OnChanges{
 
     @Input() passenger: Passenger;
     editing: boolean = false;
 
     @Output() remove: EventEmitter<any> = new EventEmitter();
     @Output() edit: EventEmitter<any> = new EventEmitter();
+
+    ngOnChanges(changes): void {
+        console.log("onChanges", changes);
+        if (changes.passenger) {
+            // create a copy of the passenger for local use
+            this.passenger = Object.assign({}, changes.passenger.currentValue);
+        }
+        
+    }
 
     onNameChange(event: any) {
         this.passenger.fname = event.target.value;
