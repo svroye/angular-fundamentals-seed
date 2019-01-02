@@ -6,16 +6,11 @@ import { Passenger } from "../../models/passenger.interface";
     styleUrls: ['passenger-dashboard.component.scss'],
     template: `
         <div>
-            <h1>Passengers</h1>
-            <ul>
-            <li *ngFor="let passenger of passengers; let i = index">
-            <span class="status" [class.checkedin]="passenger.checkedin"></span>
-                {{i}}: {{passenger.fname}}
-                <div class="date">Checked in date: 
-                {{passenger.checkedInDate ? (passenger.checkedInDate | date: 'hh:mm:ss d/M/y') : 'Not checked in'}}</div>
-                <p> Children : {{ passenger.children?.length || 0}}
-            </li>
-            </ul>
+            <h3>Airline passengers</h3>
+            <passenger-count [items]="passengers"></passenger-count>
+            <passenger-detail *ngFor="let passenger of passengers" [passenger]="passenger" 
+                (remove)="handleRemove($event)" (edit)="handleEdit($event)">
+            </passenger-detail>
         </div>
     ` 
 })
@@ -52,5 +47,12 @@ export class PassengerDashboardComponent implements OnInit{
               "children": null}
           ];
     }
+
+    handleRemove(event) {
+        console.log("REMOVE: ", event);
+    }
      
+    handleEdit(event) {
+        console.log("EDIT: ", event);
+    }
 }
