@@ -12,19 +12,42 @@ interface Passenger {
   styleUrls: ['app.component.scss'],
   templateUrl: `
     <div class="app">
+      <h1>Passengers</h1>
+      <!-- add a single class -->
       <ul>
         <li *ngFor="let passenger of passengers; let i = index">
+        <span class="status" [class.checkedin]="passenger.checkedin"></span>
           {{i}}: {{passenger.fname}}
         </li>
       </ul>
 
+      <h1>Passengers</h1>
+      <!-- adding multiple classes using ngClass -->
       <ul>
-        <template ngFor let-passenger let-i="index" [ngForOf]="passengers">
-          <li>
-            {{i}}: {{passenger.fname}}
-          </li>
-        </template>
-    </ul>
+        <li *ngFor="let passenger of passengers; let i = index">
+        <span class="status" [ngClass]="{'checkedin': passenger.checkedin}"></span>
+          {{i}}: {{passenger.fname}}
+        </li>
+      </ul>
+
+      <h1>Passengers</h1>
+      <!-- add a single style-->
+      <ul>
+        <li *ngFor="let passenger of passengers; let i = index">
+          <span class="status" [style.background]="passenger.checkedin ? '#2ecc71' : '#c0392b'" ></span>
+          {{i}}: {{passenger.fname}}
+        </li>
+      </ul>
+
+      <h1>Passengers</h1>
+      <!-- adding multiple styles using ngStyle -->
+      <ul>
+        <li *ngFor="let passenger of passengers; let i = index">
+          <span class="status" [ngStyle]="{'background': (passenger.checkedin ? '#2ecc71' : '#c0392b')}"></span>
+          {{i}}: {{passenger.fname}}
+        </li>
+      </ul>
+
     </div>
   `
 })
