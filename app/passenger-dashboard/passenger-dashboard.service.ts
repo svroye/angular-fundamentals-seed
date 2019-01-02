@@ -5,7 +5,9 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class PassengerDashboardService {
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient){
+      console.log(this.http);
+    }
 
     getPassengers(): Passenger[] {
         return [
