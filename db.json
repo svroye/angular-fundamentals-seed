@@ -6,7 +6,7 @@
       "lname": "Peeters",
       "checkedin": true,
       "checkedInDate": 1546255457000,
-      "children": null
+      "baggage": ""
     },
     {
       "id": 2,
@@ -14,16 +14,7 @@
       "lname": "Wouters",
       "checkedin": true,
       "checkedInDate": 1546241286000,
-      "children": [
-        {
-          "name": "Kim",
-          "age": 12
-        },
-        {
-          "name": "Tim",
-          "age": 16
-        }
-      ]
+      "baggage": ""
     },
     {
       "id": 3,
@@ -31,7 +22,7 @@
       "lname": "Wouters",
       "checkedin": false,
       "checkedInDate": null,
-      "children": null
+      "baggage": ""
     },
     {
       "id": 4,
@@ -39,7 +30,7 @@
       "lname": "Destadsbader",
       "checkedin": true,
       "checkedInDate": 1546155985000,
-      "children": null
+      "baggage": ""
     }
   ]
 }
