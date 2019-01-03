@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { PassengerDashboardService } from './../../passenger-dashboard.service';
 import { Passenger } from './../../models/passenger.interface';
 import { Component, OnInit } from "@angular/core";
@@ -39,12 +40,14 @@ export class PassengerDashboardComponent implements OnInit{
      
     handleEdit(event: Passenger) {
         this.passengerService.updatePassenger(event).subscribe(
-            (data: Passenger) => {
+            (data: HttpResponse<Passenger>) => {
+                console.log(data);
+                console.log(data.status)
                 this.passengers = this.passengers.map( (passenger : Passenger) => {
-                    if (passenger.id === event.id) {
-                        passenger = Object.assign({}, passenger, event); 
-                    }
-                    return passenger;
+                     if (passenger.id === event.id) {
+                         passenger = Object.assign({}, passenger, event); 
+                     }
+                     return passenger;
                 });
             }
         );
