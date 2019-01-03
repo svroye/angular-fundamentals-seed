@@ -1,5 +1,5 @@
 import { Passenger } from "./models/passenger.interface";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
@@ -16,7 +16,18 @@ export class PassengerDashboardService {
     }
 
     updatePassenger(passenger: Passenger): Observable<Passenger> {
-      return this.http.put<Passenger>(PASSENGER_API + '/' + passenger.id, passenger);
+      // create the header
+      const headers = new HttpHeaders({
+        'Content-Type': 'application.json',
+        'Authorization' : 'abcdefghijklmnopqrstuvwxyz'
+      });
+
+      // add the header
+      const httpOptions = {
+        headers: headers
+      };
+
+      return this.http.put<Passenger>(PASSENGER_API + '/' + passenger.id, passenger, httpOptions);
     }
 
     deletePassenger(passenger: Passenger): Observable<Passenger> {
