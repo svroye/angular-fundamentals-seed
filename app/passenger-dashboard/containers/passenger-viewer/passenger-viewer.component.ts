@@ -2,6 +2,7 @@ import { Passenger } from './../../models/passenger.interface';
 import { PassengerDashboardService } from './../../passenger-dashboard.service';
 import { Component, OnInit } from "@angular/core";
 import { HttpResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,11 +20,13 @@ export class PassengerViewerComponent implements OnInit {
     
     passenger: Passenger;
     
-    constructor(private passengerService: PassengerDashboardService){}
+    constructor(
+        private route: ActivatedRoute,
+        private passengerService: PassengerDashboardService){}
     
     ngOnInit() {
-        this.passengerService
-            .getPassenger(1)
+        const id = +this.route.snapshot.paramMap.get('id')
+        this.passengerService.getPassenger(id)
             .subscribe( (data: Passenger) => this.passenger = data)
     }
 
@@ -33,5 +36,6 @@ export class PassengerViewerComponent implements OnInit {
                 (data: HttpResponse<Passenger>) =>  this.passenger = Object.assign({}, this.passenger, passenger)
             );
     }
+
     
 }
