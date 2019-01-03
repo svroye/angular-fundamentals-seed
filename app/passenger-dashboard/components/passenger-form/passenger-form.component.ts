@@ -90,7 +90,7 @@ export class PassengerFormComponent {
             key: 'hand-hold',
             value: 'Hand and hold baggage'
         }
-]
+    ]
 
     toggleCheckIn(checkedIn: boolean) {
         if(checkedIn) {
