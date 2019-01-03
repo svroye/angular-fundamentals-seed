@@ -6,7 +6,7 @@
       "lname": "Peeters",
       "checkedin": true,
       "checkedInDate": 1546255457000,
-      "baggage": ""
+      "baggage": "none"
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "lname": "Wouters",
       "checkedin": true,
       "checkedInDate": 1546241286000,
-      "baggage": ""
+      "baggage": "hand-only"
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "lname": "Wouters",
       "checkedin": false,
       "checkedInDate": null,
-      "baggage": ""
+      "baggage": "hold-only"
     },
     {
       "id": 4,
@@ -30,7 +30,7 @@
       "lname": "Destadsbader",
       "checkedin": true,
       "checkedInDate": 1546155985000,
-      "baggage": ""
+      "baggage": "hand-hold"
     }
   ]
 }
