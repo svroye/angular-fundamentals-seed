@@ -8,7 +8,9 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ['passenger-viewer.component.scss'],
     template: `
         <div>
-        {{ passenger | json}}
+            <passenger-form
+                [passenger]="passenger">
+            </passenger-form>
         </div>
     `
 })

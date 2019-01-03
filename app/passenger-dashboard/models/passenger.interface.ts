@@ -4,6 +4,6 @@ export interface Passenger {
     fname: string;
     lname: string;
     checkedin: boolean;
-    checkedInDate: number | null;
+    checkedInDate?: number | null;
     baggage: string
 }
