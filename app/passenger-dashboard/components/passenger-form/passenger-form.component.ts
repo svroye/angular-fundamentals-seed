@@ -12,15 +12,15 @@ import { Baggage } from '../../models/baggage.interface';
             {{ passenger | json}}
             <div>
                 Passenger id: 
-                <input type="number" name="id" [(ngModel)]="passenger.id">
+                <input type="number" name="id" [ngModel]="passenger?.id">
             </div>
             <div>
                 Passenger first name: 
-                <input type="text" name="fname" [(ngModel)]="passenger.fname">
+                <input type="text" name="fname" [ngModel]="passenger?.fname">
             </div>
             <div>
                 Passenger last name: 
-                <input type="text" name="lname" [(ngModel)]="passenger.lname">
+                <input type="text" name="lname" [ngModel]="passenger?.lname">
             </div>
             <!-- RADIO BUTTONs-->
             <!--<div>
