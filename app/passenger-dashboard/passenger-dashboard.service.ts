@@ -15,6 +15,10 @@ export class PassengerDashboardService {
         return this.http.get<Passenger[]>(PASSENGER_API);
     }
 
+    getPassengersWithPromise(): Promise<Passenger[]> {
+      return this.http.get<Passenger[]>(PASSENGER_API).toPromise();
+  }
+
     updatePassenger(passenger: Passenger): Observable<HttpResponse<Passenger>> {
       // create the header
       const headers = new HttpHeaders({
