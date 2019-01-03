@@ -1,3 +1,4 @@
+import { PassengerViewerComponent } from './containers/passenger-viewer/passenger-viewer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PassengerDashboardService } from './passenger-dashboard.service';
 import { PassengerCountComponent } from './components/passenger-count/passenger-count.component';
@@ -11,14 +12,15 @@ import { PassengerDashboardComponent } from './containers/passenger-dashboard/pa
     declarations: [
         PassengerDashboardComponent,
         PassengerDetailComponent,
-        PassengerCountComponent
+        PassengerCountComponent,
+        PassengerViewerComponent
     ],
     imports: [
         CommonModule,
         HttpClientModule
     ],
     exports: [
-        PassengerDashboardComponent
+        PassengerViewerComponent
     ],
     providers: [
         PassengerDashboardService
