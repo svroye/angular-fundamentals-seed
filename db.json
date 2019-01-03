@@ -1,1 +1,45 @@
-{}
+{
+  "passengers": [
+    {
+      "id": 1,
+      "fname": "Bartje",
+      "lname": "Peeters",
+      "checkedin": true,
+      "checkedInDate": 1546255457000,
+      "children": null
+    },
+    {
+      "id": 2,
+      "fname": "Koentje",
+      "lname": "Wouters",
+      "checkedin": true,
+      "checkedInDate": 1546241286000,
+      "children": [
+        {
+          "name": "Kim",
+          "age": 12
+        },
+        {
+          "name": "Tim",
+          "age": 16
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fname": "Kris",
+      "lname": "Wouters",
+      "checkedin": false,
+      "checkedInDate": null,
+      "children": null
+    },
+    {
+      "id": 4,
+      "fname": "Niels",
+      "lname": "Destadsbader",
+      "checkedin": true,
+      "checkedInDate": 1546155985000,
+      "children": null
+    }
+  ]
+}

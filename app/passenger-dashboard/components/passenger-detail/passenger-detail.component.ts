@@ -39,7 +39,6 @@ export class PassengerDetailComponent implements OnChanges{
     @Output() edit: EventEmitter<any> = new EventEmitter();
 
     ngOnChanges(changes): void {
-        console.log("onChanges", changes);
         if (changes.passenger) {
             // create a copy of the passenger for local use
             this.passenger = Object.assign({}, changes.passenger.currentValue);

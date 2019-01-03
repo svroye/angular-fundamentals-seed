@@ -6,7 +6,7 @@ import { Component, Input } from "@angular/core";
     selector: 'passenger-count',
     template: `
             <div>
-                Total checked in passengers: {{ checkedInCount() }}/{{ items.length }}
+                Total checked in passengers: {{ checkedInCount() }}/{{ items?.length }}
             </div>
     `
 })
