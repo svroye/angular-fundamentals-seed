@@ -1,5 +1,5 @@
 import { Passenger } from './../../models/passenger.interface';
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Baggage } from '../../models/baggage.interface';
 
 
@@ -8,19 +8,27 @@ import { Baggage } from '../../models/baggage.interface';
     selector: 'passenger-form',
     styleUrls: ['passenger-form.component.scss'],
     template: `
-        <form #form="ngForm" novalidate>
-            {{ passenger | json}}
+        <form #form="ngForm" novalidate (ngSubmit)="handleSubmit(form.value, form.valid)">
             <div>
                 Passenger id: 
-                <input type="number" name="id" [ngModel]="passenger?.id">
+                <input type="number" name="id" [ngModel]="passenger?.id" required #id="ngModel">
+                <div *ngIf="id.errors?.required && id.dirty" class="error">
+                    Passenger id is required
+                </div>
             </div>
             <div>
                 Passenger first name: 
-                <input type="text" name="fname" [ngModel]="passenger?.fname">
+                <input type="text" name="fname" required [ngModel]="passenger?.fname" #fname="ngModel">
+                <div *ngIf="fname.errors?.required && fname.dirty" class="error">
+                    Passenger first name is required
+                </div>
             </div>
             <div>
                 Passenger last name: 
-                <input type="text" name="lname" [ngModel]="passenger?.lname">
+                <input type="text" name="lname" required #lname="ngModel" [ngModel]="passenger?.lname">
+                <div *ngIf="lname.errors?.required && lname.dirty" class="error">
+                    Passenger last name is required
+                </div>
             </div>
             <!-- RADIO BUTTONs-->
             <!--<div>
@@ -58,13 +66,10 @@ import { Baggage } from '../../models/baggage.interface';
                         {{ item.value }}
                     </option>
                 </select>
-                <select name="baggage" [ngModel]="passenger?.baggage" >
-                    <option *ngFor="let item of baggage" [ngValue]="item.key">
-                        {{ item.value }}
-                    </option>
-                </select>
             </div>
-            {{ form.value | json }}
+            <button type="submit" [disabled]="form.invalid">
+                Update passenger
+            </button>
         </form>
     `
 })
@@ -72,6 +77,9 @@ export class PassengerFormComponent {
 
     @Input()
     passenger: Passenger;
+
+    @Output()
+    update: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
     baggage: Baggage[] = [
         {
@@ -95,6 +103,12 @@ export class PassengerFormComponent {
     toggleCheckIn(checkedIn: boolean) {
         if(checkedIn) {
             this.passenger.checkedInDate = Date.now();
+        }
+    }
+    
+    handleSubmit(passenger: Passenger, isValid: boolean) {
+        if (isValid) {
+            this.update.emit(passenger);
         }
     }
 }
