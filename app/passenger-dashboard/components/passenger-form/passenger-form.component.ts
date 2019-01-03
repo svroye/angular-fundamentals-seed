@@ -21,7 +21,8 @@ import { Component, Input } from "@angular/core";
                 Passenger last name: 
                 <input type="text" name="lname" [ngModel]="passenger?.lname">
             </div>
-            <div>
+            <!-- RADIO BUTTONs-->
+            <!--<div>
                 Checked in: 
                 <label>
                     <input type="radio" name="checkedin" [ngModel]="passenger?.checkedin" [value]="true"
@@ -32,6 +33,15 @@ import { Component, Input } from "@angular/core";
                     <input type="radio" name="checkedin" [ngModel]="passenger?.checkedin" [value]="false"
                             (ngModelChange)="toggleCheckIn($event)">
                     No
+                </label>
+            </div> -->
+
+            <!-- CHECKBOX -->
+             <div>
+                Checked in: 
+                <label>
+                    <input type="checkbox" name="checkedin" [ngModel]="passenger?.checkedin"
+                            (ngModelChange)="toggleCheckIn($event)">
                 </label>
             </div>
 
