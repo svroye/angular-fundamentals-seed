@@ -1,7 +1,8 @@
 import { Passenger } from "./models/passenger.interface";
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
+import { catchError } from 'rxjs/operators';
 
 const PASSENGER_API: string = '/api/passengers';
 
@@ -12,7 +13,17 @@ export class PassengerDashboardService {
     }
 
     getPassengers(): Observable<Passenger[]> {
-        return this.http.get<Passenger[]>(PASSENGER_API);
+        return this.http.get<Passenger[]>(PASSENGER_API)
+          .pipe( catchError(this.handleError));
+    }
+
+    private handleError(error: HttpErrorResponse) {
+      if (error.error instanceof ErrorEvent) {
+        console.error('An error occurred: ', error.error.message);
+      } else {
+        console.error('Backend returned code ', error.status, ', body was ', error.error );
+      }
+      return throwError("Something bad happened, please try again later");
     }
 
     getPassengersWithPromise(): Promise<Passenger[]> {

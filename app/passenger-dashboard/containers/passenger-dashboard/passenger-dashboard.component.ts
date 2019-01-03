@@ -23,18 +23,21 @@ export class PassengerDashboardComponent implements OnInit{
     constructor(private passengerService: PassengerDashboardService){}
     
     ngOnInit(): void {
-        // this.passengerService.getPassengers().subscribe( 
-        //     (data: Passenger[]) => {
-                // this.passengers = data;
-                // console.log("Using Observables");
-        // );
-        // ALTERNATIVE (NOT RECOMMENDED): PROMISES
-        this.passengerService.getPassengersWithPromise().then(
+        this.passengerService.getPassengers().subscribe( 
             (data: Passenger[]) => {
-                this.passengers = data
-                console.log("Using Promises");
-            }
-        )
+                this.passengers = data;
+                console.log("Using Observables");
+            },
+            (error: any) => console.log(error)
+        );
+
+        // ALTERNATIVE (NOT RECOMMENDED): PROMISES
+        // this.passengerService.getPassengersWithPromise().then(
+        //     (data: Passenger[]) => {
+        //         this.passengers = data
+        //         console.log("Using Promises");
+        //     }
+        // )
     }
 
     handleRemove(event: Passenger) {
