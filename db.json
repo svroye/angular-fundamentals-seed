@@ -2,7 +2,7 @@
   "passengers": [
     {
       "id": 1,
-      "fname": "Bartjeeeeeee",
+      "fname": "Ba",
       "lname": "Peeters",
       "checkedin": true,
       "baggage": "none",
@@ -10,11 +10,11 @@
     },
     {
       "id": 2,
-      "fname": "Koentje",
+      "fname": "Koen",
       "lname": "Wouters",
       "checkedin": true,
-      "checkedInDate": 1546241286000,
-      "baggage": "hand-only"
+      "baggage": "hand-only",
+      "checkedInDate": 1546241286000
     },
     {
       "id": 3,

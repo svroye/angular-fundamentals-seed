@@ -2,7 +2,7 @@ import { Passenger } from './../../models/passenger.interface';
 import { PassengerDashboardService } from './../../passenger-dashboard.service';
 import { Component, OnInit } from "@angular/core";
 import { HttpResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['passenger-viewer.component.scss'],
     template: `
         <div>
+            <button (click)="goBack()">&lsaquo; Go back</button>
             <passenger-form
                 [passenger]="passenger" (update)="onUpdatePassenger($event)">
             </passenger-form>
@@ -21,6 +22,7 @@ export class PassengerViewerComponent implements OnInit {
     passenger: Passenger;
     
     constructor(
+        private router: Router,
         private route: ActivatedRoute,
         private passengerService: PassengerDashboardService){}
     
@@ -37,5 +39,8 @@ export class PassengerViewerComponent implements OnInit {
             );
     }
 
-    
+    goBack() {
+        this.router.navigate(['/passengers']);
+    }
+
 }
